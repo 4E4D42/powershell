@@ -1,10 +1,14 @@
 Import-Module MSOnline
 Connect-MsolService
 
-$users = Import-Csv "C:\Users\nathan.bartholomew\Downloads\users.csv" -Delimiter ","
+# Uses bulkUserList.csv template located in this repo 
+
+$users = Import-Csv "~\bulkUserList.csv" -Delimiter ","
+
 foreach ($user in $users)
 {
     $upn = $user.UserPrincipalName
+    # Uncomment usagelocation if you need to set region location during license assignment
     # $usagelocation = $user.usagelocation
     $SKU = $user.SKU
 
